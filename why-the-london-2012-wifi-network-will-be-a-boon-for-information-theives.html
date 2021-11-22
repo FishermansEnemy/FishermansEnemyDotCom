@@ -1,0 +1,297 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <link rel="shortcut icon" href="" />
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="FishermansEnemy" />
+        <title>Why the London 2012 WiFi network will be a boon for information theives</title>
+        
+<meta name="description" content="&lt;p&gt;&lt;img alt=&#34;image0&#34; src=&#34;http://www.great-britain.co.uk/world-heritage/westminster-abbey/Westminster-abbey.jpg&#34; /&gt;I was reading twitter the other day and came across a report
+on London getting blanketed by free &lt;a class=&#34;reference external&#34; href=&#34;http://www.telegraph.co.uk/travel/destinations/europe/uk/london/8997413/Europes-largest-free-Wi-Fi-zone-comes-to-London.html&#34;&gt;WiFi
+coverage&lt;/a&gt;
+courtesy of O2 and this got me thinking. If I were a bad guy this would
+present me with such a very tasty target. Lots of tourists coming into
+the …&lt;/p&gt;" />
+
+        <!--[if !IE 7]>
+        <style type="text/css">
+            #main-content {display:table;height:100%}
+        </style>
+        <![endif]-->
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/backdrop.css" />
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/pygments.css" />
+        <script src="http://fishermansenemy.com/theme/js/modernizr.js"></script>
+
+
+    </head>
+      
+
+    <body>
+        <div class="master-row">
+
+            <div class="content-pane main-content">
+                <nav class="top-bar" data-topbar role="navigation">
+                    <ul class="title-area">
+                        <li class="name"><!-- Leave this empty --></li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
+                    <section class="top-bar-section">
+                        <ul class="left">
+                        </ul>
+                        <ul class="right">
+                            <li><a href="http://fishermansenemy.com/category/gaming.html">Gaming</a></li>
+                            <li><a href="http://fishermansenemy.com/category/general.html">General</a></li>
+                            <li><a href="http://fishermansenemy.com/category/hardware.html">Hardware</a></li>
+                            <li class="active"><a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></li>
+                            <li><a href="http://fishermansenemy.com/category/random.html">Random</a></li>
+                            <li><a href="http://fishermansenemy.com/category/rant.html">Rant</a></li>
+                            <li><a href="http://fishermansenemy.com/category/uncategorized.html">Uncategorized</a></li>
+                        </ul>
+                    </section>
+                </nav>
+
+                <div class="row title-bar">
+                    <div class="small-12 columns">
+                        <h1><a href="http://fishermansenemy.com">FishermansEnemy</a></h1><h2> <small>Musings of an infosec nerd</small></h2>
+                        <hr>
+                    </div>
+                </div>
+            
+                <div id="contents">
+<div class="row">
+    <div class="small-12 columns article">
+        <h2>Why the London 2012 WiFi network will be a boon for information theives</h2>
+        <div class="row info-bar" style="margin-left:0rem;margin-bottom:6px;">
+    <div class="small-12 columns">
+        <ul class="inline-list">
+            <li><span><i class="fa fa-calendar"></i>&nbsp; Wed 11 January 2012</span></li>
+            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></span></li>
+        </ul>
+    </div>
+</div>
+        <section class="article">
+            <p><img alt="image0" src="http://www.great-britain.co.uk/world-heritage/westminster-abbey/Westminster-abbey.jpg" />I was reading twitter the other day and came across a report
+on London getting blanketed by free <a class="reference external" href="http://www.telegraph.co.uk/travel/destinations/europe/uk/london/8997413/Europes-largest-free-Wi-Fi-zone-comes-to-London.html">WiFi
+coverage</a>
+courtesy of O2 and this got me thinking. If I were a bad guy this would
+present me with such a very tasty target. Lots of tourists coming into
+the city for the Olympics with all of their laptops, smart phones and
+tables. All of them not wanting to spend huge amounts on 3G roaming but
+thirsty for information and posting thousands of pics to Facebook and
+twitter. Of course they are going to take advantage of this free
+service, and so will the criminals.</p>
+<p>In order to offer this service free of charge then security will always
+take a back seat. After all the information flowing over the network
+isn't O2's is it? They aren't going to give each user a certificate to
+authenticate to the AP, and they aren't going to
+configure&nbsp;everyone's&nbsp;device to verify the cert on the AP. I mean who are
+we kidding, they aren't even going to implement WEP let alone WPA2. At
+best it will be a captive portal so they can grab some nice info to sell
+on to their advertising buddies.</p>
+<p>So now you are in London, you've taken some photos, waved at the Queen
+and taunted the guards outside Buckingham palace. You're ready to drop
+it all of Facebook so you're friends know just how much better you are
+than them. Time to connect to the free WiFi!</p>
+<p>Open up your WiFi&nbsp;connection&nbsp;manager and there is &quot;London Free WiFi from
+O2&quot; [OPEN], sweet.</p>
+<p>Select the AP and&nbsp;voilà, IP address obtained and I'm all ready to go.</p>
+<p>Open up Internet Explorer and I get a nice O2 registration page where
+you can sign up for a free account or log on with an existing one. You
+put in your name, address, date of birth, mothers maiden name email
+address etc and are issued a default password. You don't bother changing
+this, you just want to get on&nbsp;Facebook.</p>
+<p>Log into Facebook and post pics. Look at your friends posts and comment
+&quot;lol&quot;. Isn't living in the future cool?</p>
+<p>The above sounds like a plausible use case for most people in the city
+and for most people they won't see anything wrong with it. After all,
+they had to put in a password right, so it must be secure? Well, not so
+much. You see, while the tourist was sitting down with their latte to
+make their Facebook friends jealous, what actually was happening was
+this.</p>
+<p>A criminal sets themselves up in a high traffic area of the city,
+probably near one of the sporting events. They fire up their laptop with
+an ALFA AWUS051NH wireless network adapter and 5dBi antenna.They will
+then fire up a copy of
+<a class="reference external" href="http://wirelessdefence.org/Contents/KARMAMain.htm">Karma</a>. Now,
+Karma is a very generous piece of code. It will listen on the WiFi card
+and wait to hear other devices probing for access points. Usually when
+and AP&nbsp;receives&nbsp;a broadcast for an SSID that it doesn't host it will
+simply ignore it, but Karma will answer all probes with a positive and
+allow the client to connect to it. Karma will then give the client and
+access point and begin to handle traffic. At this point Karma shows its
+generous nature again and will start answering requests for connections
+on a large number of protocols such as SMTP and FTP, it will use these
+connections to harvest the users credentials. If the criminal is
+being&nbsp;particularly evil they will be running
+<a class="reference external" href="http://dev.metasploit.com/redmine/projects/framework/wiki/Karmetasploit">Karmetasploit</a>&nbsp;to
+automatically detect the software that you are using and start feeding
+them backdoors and exploits, joining you to their botnet and saving your
+machine to have more fun with later.</p>
+<p>If the criminal is feeling generous he will connect himself to the
+legitimate WiFi and route your traffic onwards so you can actually surf,
+and he can steal even more credentials.</p>
+<p>So how do you get around this? is there a way to use this service
+safely? If you want to give yourself a level of privacy while using a
+public network then your only real option is to connect via VPN to
+another trusted network and run all of your traffic through that. You
+are still exposed to having your credentials harvested between
+establishing connection to the network and establishing connection to
+the VPN, but if you are careful and make sure there are no apps that are
+going to attempt to connect as soon as they have a valid network then
+you should be&nbsp;OK. Also, make sure your anti-virus is up to date, but DO
+THAT AT HOME! you will see why in a bit.</p>
+<p>If your smart phone supports VPN's then it should be safe to use them as
+well, if not then either don't use it, or use 3G. Check
+out&nbsp;<a class="reference external" href="http://openvpn.net/">openVPN</a>&nbsp;to set up a service at your home
+that you can connect back to.</p>
+<p>On the subject of software that will try to connect as soon as it gets a
+connection, it's not just email apps that will do this. If you have
+Java, Acrobat, Flash or a host of other apps installed then they will
+attempt to connect back to their mothership and download updates. If our
+criminal is being very evil he will also be running
+<a class="reference external" href="http://www.infobytesec.com/down/isr-evilgrade-Readme.txt">evilgrade</a>.
+Evilgrade is like Karma but for updates, it will intercept traffic and
+look for software calling home for updates. When it finds one it will
+intercept the connection and send the computer malware instead of the
+updates it was expecting. Welcome to the criminals botnet. The only
+defence is to make sure you are using a VPN but you will still be
+exposed to attack before you have established the connection or if it
+drops out for any reason. <a class="reference external" href="http://practicalrambler.blogspot.com/2011/01/windows-7-firewall-how-to-always-use.html">This
+article</a>
+give some details on some third-party software you could use to help
+with this.</p>
+<p>Everything that I have said above applies just the same to using any
+public network, but I contest that this combination of such a large
+public network with so many foreign tourists who will not want to use 3G
+due to costs makes this a golden opportunity for information thieves. So
+spread the word, make sure that your friends and family understand the
+risks, and as <a class="reference external" href="http://www.youtube.com/user/InfosecCynic">&#64;j4vv4d</a>
+would say, &quot;Stay secure my friends&quot;.</p>
+    
+        </section>
+    </div>
+</div>
+                </div>
+
+                <footer class="show-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>                </footer>
+            </div>
+            
+            <div class="image-pane main-content" style="background: url('http://fishermansenemy.com/images/backdrop.jpg'); background-size:cover; background-position: right;">
+                <div class="row">
+                    <div class="small-12 medium-4 large-12 columns">
+                        <h5 class='text-center'>About</h5>
+                        <div class="about-me">
+                            <div class="hide-for-medium-only small-3 columns no-buffer">
+                                <a class="th" href="http://fishermansenemy.com/images/profileimage.jpg">
+                                    <img src="http://fishermansenemy.com/images/profileimage.jpg">
+                                </a>
+                            </div>
+                            <div class="small-9 medium-12 large-9 columns text-justify">
+                                The personal blog of a UK based penetration tester
+                            </div>
+                            <div class="small-12 columns">
+                                <ul class="inline-center social-list">
+                                    <li><a href="http://twitter.com/FishermansEnemy"><i class="fa fa-twitter"></i>&nbsp; Twitter</a></li>
+                                    <li><a href="http://www.youtube.com/user/MrFishermansEnemy"><i class="fa fa-youtube"></i>&nbsp; YouTube</a></li>
+                                    <li><a href="http://twitch.tv/FishermansEnemyTV"><i class="fa fa-twitch"></i>&nbsp; Twitch</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4  large-12 columns link-list">
+                    </div>
+
+<!--
+                    <div class="small-12 medium-3 large-12 columns">
+                    </div>
+-->
+               </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <footer class="hide-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>            </footer>
+        </div>
+        
+        
+        <script src="http://fishermansenemy.com/theme/js/jquery.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/foundation.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/app.js"></script>
+		
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-20157586-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+  
+</html>

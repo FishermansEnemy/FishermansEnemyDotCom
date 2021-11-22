@@ -1,0 +1,354 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <link rel="shortcut icon" href="" />
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="FishermansEnemy" />
+        <title>Watch out for wireless technologies</title>
+        
+<meta name="description" content="&lt;p&gt;This is a cross post of a blog article I wrote at
+&lt;a class=&#34;reference external&#34; href=&#34;http://xiphosresearch.com&#34;&gt;xiphosresearch.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Common risk assessment blind spots&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Wireless technologies have become commonplace in the last few decades,
+everything with a battery seems to have an IP stack and an antenna.
+Ubiquitous connectivity allows us access to &amp;nbsp;the whole …&lt;/p&gt;" />
+
+        <!--[if !IE 7]>
+        <style type="text/css">
+            #main-content {display:table;height:100%}
+        </style>
+        <![endif]-->
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/backdrop.css" />
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/pygments.css" />
+        <script src="http://fishermansenemy.com/theme/js/modernizr.js"></script>
+
+
+    </head>
+      
+
+    <body>
+        <div class="master-row">
+
+            <div class="content-pane main-content">
+                <nav class="top-bar" data-topbar role="navigation">
+                    <ul class="title-area">
+                        <li class="name"><!-- Leave this empty --></li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
+                    <section class="top-bar-section">
+                        <ul class="left">
+                        </ul>
+                        <ul class="right">
+                            <li><a href="http://fishermansenemy.com/category/gaming.html">Gaming</a></li>
+                            <li><a href="http://fishermansenemy.com/category/general.html">General</a></li>
+                            <li><a href="http://fishermansenemy.com/category/hardware.html">Hardware</a></li>
+                            <li class="active"><a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></li>
+                            <li><a href="http://fishermansenemy.com/category/random.html">Random</a></li>
+                            <li><a href="http://fishermansenemy.com/category/rant.html">Rant</a></li>
+                            <li><a href="http://fishermansenemy.com/category/uncategorized.html">Uncategorized</a></li>
+                        </ul>
+                    </section>
+                </nav>
+
+                <div class="row title-bar">
+                    <div class="small-12 columns">
+                        <h1><a href="http://fishermansenemy.com">FishermansEnemy</a></h1><h2> <small>Musings of an infosec nerd</small></h2>
+                        <hr>
+                    </div>
+                </div>
+            
+                <div id="contents">
+<div class="row">
+    <div class="small-12 columns article">
+        <h2>Watch out for wireless technologies</h2>
+        <div class="row info-bar" style="margin-left:0rem;margin-bottom:6px;">
+    <div class="small-12 columns">
+        <ul class="inline-list">
+            <li><span><i class="fa fa-calendar"></i>&nbsp; Tue 07 May 2013</span></li>
+            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></span></li>
+        </ul>
+    </div>
+</div>
+        <section class="article">
+            <p>This is a cross post of a blog article I wrote at
+<a class="reference external" href="http://xiphosresearch.com">xiphosresearch.com</a></p>
+<p><strong>Common risk assessment blind spots</strong></p>
+<p>Wireless technologies have become commonplace in the last few decades,
+everything with a battery seems to have an IP stack and an antenna.
+Ubiquitous connectivity allows us access to &nbsp;the whole of human
+knowledge with a simple Google search. If an organisation&nbsp;didn't&nbsp;provide
+the infrastructure to access the internet then they might be thought of
+as backwards and out of touch with modern business methods. There has
+been a lot written on the subject of WiFi security and many lessons have
+been learned since the good old days of WEP “encryption”, but there are
+still things organisations need to think about before deploying this
+kind of technology.</p>
+<div class="section" id="wpa2-is-secure-right">
+<h2>WPA2 is secure, right?</h2>
+<p>Yes, WPA2 is pretty secure and if someone is looking to have a play with
+your access points then seeing that in their favorite scanning tool will
+probably have them looking elsewhere. When I am tasked with assessing
+the security of a wireless installation then use of WPA2 is not in
+itself enough for me to give the thumbs up. You see, when WPA2 is used
+with a pre-shared key there is the possibility that whomever set it up
+did not create a complex enough key. It is a simple matter to observe
+the wireless network traffic until you see a device authenticating to
+the access point, once this happens and you observe the 4 way handshake
+you can feed this into a tool like aircrack-ng along with a word list.
+If the network admin picked a dictionary word, or a dictionary word with
+some “clever” character substitutions then you can usually recover the
+pre-shared key in a day or so. An attacker can boost their chances of
+obtaining the key by seeding the word list with words that are closely
+linked to the organisation they are attacking. They simply download the
+entire company website, pull out every unique word they find and add
+them to the usual word list.</p>
+<p>As you can see from the above, it is imperative that the key you select
+be as random and as long as possible to help mitigate this kind of
+attack. The problem this gives you is the same as with any other
+password complexity requirement. The more secure it is, the more likely
+it is to be written down where someone who should not know it can find
+it. You also have the added headache of distributing the key to the
+legitimate users of the network.</p>
+<p>What a lot of network administrators fail to think about is what happens
+when they key is compromised, for example if a wireless device is lost,
+stolen or breached by viruses or malware. Once your key is out of your
+control then you need to make sure that it is changed and a new key
+distributed to all of your users. In my experience this rarely happens,
+and it is usually a reason for abandoning the pre-shared key model and
+&nbsp;looking at enterprise level controls using 802.1x.</p>
+</div>
+<div class="section" id="its-just-a-guest-network">
+<h2>It’s just a guest network</h2>
+<p>A lot of organisations have secure 802.1x wireless infrastructures for
+their staff to use for corporate LAN access but decide that it would be
+nice for visitors to be able to get internet access without having to
+provision certificates for them and allowing them access to the
+corporate LAN. This is very convenient for guests, but as we shall see
+there are a number of issues that need to be addressed before you roll
+something like this out.</p>
+<p>Firstly, wireless does not respect the walls of your building the way
+that your wired infrastructure does. A 2.4GHz WiFi network can usually
+be observed from the car park of an office building as well as other
+floors of a building that may not be under your organisations control.
+When you implement your infrastructure take care with antenna type and
+placement to minimise the amount you radiate to the outside world by
+using directional antennas and turning down the transmission power on
+your access points. If a network is radiating too much power in the
+wrong direction then it is trivial to get access to it using a laptop's
+built in network card, but someone who wanted to take advantage of your
+generous offer of free WiFi could do so from quite a considerable
+distance with something like an Alfa USB wireless card and a cheap
+directional antenna, which brings me onto my second point.</p>
+</div>
+<div class="section" id="you-are-liable-for-what-happens-on-your-network">
+<h2>You are liable for what happens on your network</h2>
+<p>You may trust the people you work for and the guests you invite into
+your buildings, but if someone can access your network from outside of
+your organisations sphere of control then they have free internet access
+and you have no way to control them. If you implement guest WiFi access
+then make sure that you apply the same levels of content filtering and
+logging that you do on your wired network. If someone is intent on doing
+something illegal using your network then any investigation is going to
+end up on your doorstep. I don’t know a single company that would want
+to be in that position. Ultimately this needs to be taken on board as
+part of the standard risk assessment process, and the benefits of
+offering this service may not be worth the investment required to
+mitigate the threat of unauthorised or illegal use of the
+infrastructure.</p>
+</div>
+<div class="section" id="its-not-just-wifi-that-radiates">
+<h2>It’s not just WiFi that radiates</h2>
+<p>The points that I have addressed above are the biggest blind spots that
+I have come across in my experience with corporate WiFi, but one that
+still catches a lot of organisations out is all of the other things they
+have that utilise radio. This kind of problem is one that the
+intelligence services have been aware of for quite some time, which is
+why you will never see a wireless keyboard and mouse in GCHQ. They have
+invested time and money into both protecting themselves and being able
+to intercept these kinds of signals from others. This kind of signals
+intelligence is known to the outside world under it’s codename ‘Tempest’
+and has been actively researched since the mid 1980’s.</p>
+<p>I would have a hard time justifying to a client that they should adopt
+‘tempest’ levels of emission control as most of them simply are not
+under threat from actors who will use this level of sophistication,
+however I have seen wireless technology deployed within critical
+business functions where it simply was not needed.</p>
+<p>An example of this would be in a service centre environment. The agents
+in the service centre were delivering first contact support to the
+entire organisation including authentication and access control
+services. They are desk bound, and in fact cannot do their job if they
+are away from their computer. These agents had recently had their phone
+system upgraded and had all been given very nice looking wireless
+headsets with which to take their calls. A brief look at these headsets
+revealed that the protocol they were using to communicate with their
+base stations was DECT, a standard that anyone with a wireless phone or
+baby monitor would be familiar with. DECT can employ encryption of the
+data stream, however since 2010 this has been rendered ineffective as
+the team at deDECTed.org managed to reverse engineer the closed source
+security algorithm in place so that the encryption key could be
+recovered.</p>
+<p>I mention the encryption here to ensure you understand that even with
+encryption in place the content of these conversations cannot be
+considered to be private, however in the case of the contact centre I
+was investigating the data sheets for the device proudly stated that
+encryption was not actually implemented. The data sheets were also very
+proud of the range of the devices, boasting a 50m range within a
+building and up to 200m outdoors using only the low power headset and
+base station. This particular contact centre was well within 200m of a
+public space with direct line of sight to the call handling agents
+through the buildings windows. A small investment in a Com-On-Air PCMCIA
+card and possibly a cheap directional antenna and someone could very
+easily listen in on or record every phone call taking place, a treasure
+trove of information for someone who wishes to do your organisation
+harm.</p>
+<p>In this case I strongly advised that they cease using this technology
+and outlined the risks above, but I can’t really blame them for
+implementing it in the first place. It’s my job to think evil things
+about every piece of technology I come across, but the vast majority of
+people who are involved in procurement and risk assessment don’t make
+the connection between ‘wireless’ and ‘security’ unless they see the
+WiFi logo somewhere on the box.</p>
+</div>
+<div class="section" id="its-all-about-risk">
+<h2>It’s all about risk</h2>
+<p>Technical security has been talked about a lot with regards to wireless
+networking and wireless technologies but as I have demonstrated here
+there are still a few blind spots that organisations need to address
+when investigating any technology that comes with a radio in it. Utilise
+your organisations security staff as part of the risk assessment process
+and ensure that they are given the resources to keep their knowledge up
+to date. If you are implementing anything using wireless technologies
+and do not have the skills in house to assess the security implications
+then invest in some external consultancy. This could save you a lot of
+time and money compared to fixing an insecure implementation. This is a
+problem that is not going to get any easier to deal with as radio
+connectivity becomes more a part of every device we use.</p>
+</div>
+    
+        </section>
+    </div>
+</div>
+                </div>
+
+                <footer class="show-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>                </footer>
+            </div>
+            
+            <div class="image-pane main-content" style="background: url('http://fishermansenemy.com/images/backdrop.jpg'); background-size:cover; background-position: right;">
+                <div class="row">
+                    <div class="small-12 medium-4 large-12 columns">
+                        <h5 class='text-center'>About</h5>
+                        <div class="about-me">
+                            <div class="hide-for-medium-only small-3 columns no-buffer">
+                                <a class="th" href="http://fishermansenemy.com/images/profileimage.jpg">
+                                    <img src="http://fishermansenemy.com/images/profileimage.jpg">
+                                </a>
+                            </div>
+                            <div class="small-9 medium-12 large-9 columns text-justify">
+                                The personal blog of a UK based penetration tester
+                            </div>
+                            <div class="small-12 columns">
+                                <ul class="inline-center social-list">
+                                    <li><a href="http://twitter.com/FishermansEnemy"><i class="fa fa-twitter"></i>&nbsp; Twitter</a></li>
+                                    <li><a href="http://www.youtube.com/user/MrFishermansEnemy"><i class="fa fa-youtube"></i>&nbsp; YouTube</a></li>
+                                    <li><a href="http://twitch.tv/FishermansEnemyTV"><i class="fa fa-twitch"></i>&nbsp; Twitch</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4  large-12 columns link-list">
+                    </div>
+
+<!--
+                    <div class="small-12 medium-3 large-12 columns">
+                    </div>
+-->
+               </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <footer class="hide-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>            </footer>
+        </div>
+        
+        
+        <script src="http://fishermansenemy.com/theme/js/jquery.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/foundation.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/app.js"></script>
+		
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-20157586-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+  
+</html>

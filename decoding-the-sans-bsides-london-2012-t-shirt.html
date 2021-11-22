@@ -1,0 +1,376 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <link rel="shortcut icon" href="" />
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="FishermansEnemy" />
+        <title>Decoding the SANS Bsides london 2012 t shirt</title>
+        
+<meta name="description" content="&lt;p&gt;Now that I&#39;ve had a little while to recover from my tip to Atlantis ...
+sorry, London last week I thought I&#39;d turn my hand to something that&#39;s
+been bothering me ever since I saw it.&lt;/p&gt;
+&lt;p&gt;Let me introduce the SANS variant of the offical bsides London&amp;nbsp;t shirt.&lt;/p&gt;
+&lt;p&gt;[caption id …&lt;/p&gt;" />
+
+        <!--[if !IE 7]>
+        <style type="text/css">
+            #main-content {display:table;height:100%}
+        </style>
+        <![endif]-->
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/backdrop.css" />
+        <link rel="stylesheet" href="http://fishermansenemy.com/theme/css/pygments.css" />
+        <script src="http://fishermansenemy.com/theme/js/modernizr.js"></script>
+
+
+    </head>
+      
+
+    <body>
+        <div class="master-row">
+
+            <div class="content-pane main-content">
+                <nav class="top-bar" data-topbar role="navigation">
+                    <ul class="title-area">
+                        <li class="name"><!-- Leave this empty --></li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+                    </ul>
+                    <section class="top-bar-section">
+                        <ul class="left">
+                        </ul>
+                        <ul class="right">
+                            <li><a href="http://fishermansenemy.com/category/gaming.html">Gaming</a></li>
+                            <li><a href="http://fishermansenemy.com/category/general.html">General</a></li>
+                            <li><a href="http://fishermansenemy.com/category/hardware.html">Hardware</a></li>
+                            <li class="active"><a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></li>
+                            <li><a href="http://fishermansenemy.com/category/random.html">Random</a></li>
+                            <li><a href="http://fishermansenemy.com/category/rant.html">Rant</a></li>
+                            <li><a href="http://fishermansenemy.com/category/uncategorized.html">Uncategorized</a></li>
+                        </ul>
+                    </section>
+                </nav>
+
+                <div class="row title-bar">
+                    <div class="small-12 columns">
+                        <h1><a href="http://fishermansenemy.com">FishermansEnemy</a></h1><h2> <small>Musings of an infosec nerd</small></h2>
+                        <hr>
+                    </div>
+                </div>
+            
+                <div id="contents">
+<div class="row">
+    <div class="small-12 columns article">
+        <h2>Decoding the SANS Bsides london 2012 t shirt</h2>
+        <div class="row info-bar" style="margin-left:0rem;margin-bottom:6px;">
+    <div class="small-12 columns">
+        <ul class="inline-list">
+            <li><span><i class="fa fa-calendar"></i>&nbsp; Mon 30 April 2012</span></li>
+            <li><span><i class="fa fa-folder-open"></i>&nbsp; <a href="http://fishermansenemy.com/category/infosec.html">InfoSec</a></span></li>
+        </ul>
+    </div>
+</div>
+        <section class="article">
+            <p>Now that I've had a little while to recover from my tip to Atlantis ...
+sorry, London last week I thought I'd turn my hand to something that's
+been bothering me ever since I saw it.</p>
+<p>Let me introduce the SANS variant of the offical bsides London&nbsp;t shirt.</p>
+<p>[caption id=&quot;attachment_288&quot; align=&quot;alignleft&quot; width=&quot;300&quot; caption=&quot;The
+back of the SANS bsides London 2012 t shirt&quot;]<a class="reference external" href="http://fishermansenemy.com/blog/wp-content/uploads/2012/04/SANSbsides2012shirt.jpg"><img alt="The reverse of the SANS bsides London 2012 t shirt. Contains code" src="http://fishermansenemy.com/blog/wp-content/uploads/2012/04/SANSbsides2012shirt-300x225.jpg" /></a>[/caption]</p>
+<p>As you can see there is a nice block of code on the back. I assumed that
+this was some kind of well known infosec inside joke that I wasn't
+familiar with. I put in on hoping that it didn't say &quot;Kick me&quot; in
+unicode and proceeded to fill myself with Club Mate and awesome talks.</p>
+<p>A few days pass and I catch sight of it again in the washing, so before
+tossing it in the washer I took a picture so I can take a closer look
+later.</p>
+<div class="section" id="what-do-we-have-here">
+<h2>What do we have here?</h2>
+<p>It looks like we have 2 different items here. The first block of what
+looks like it could be hex or hex encoded data and the last looks like
+some kind of script.</p>
+</div>
+<div class="section" id="the-first-block">
+<h2>The first block</h2>
+<p>The first thing I noticed about the code is that it ends with either
+3d3d or 3d3d3d if you allow it to wrap to the bottom like. So, what
+encoding scheme do we know that pads the end of a block with 2
+characters? That's right, base64. If you take 3d3d in hex and convert it
+to ASCII you get ==, the typical padding for base64.</p>
+<p>Next, I took the string from the shirt and converted it from hex to
+ASCII</p>
+<pre class="literal-block">
+5955677851555a44643149766257396a4c6d3570596d5630633246774c7938366348523061413d3d
+</pre>
+<p>which converts to</p>
+<pre class="literal-block">
+YUgxQUZDd1IvbW9jLm5pYmV0c2FwLy86cHR0aA==
+</pre>
+<p>I then took this base64 encoded string and decoded it
+using&nbsp;<a class="reference external" href="http://www.opinionatedgeek.com/dotnet/tools/base64decode/">http://www.opinionatedgeek.com/dotnet/tools/base64decode/</a>&nbsp;. This
+gave me an ASCII string.</p>
+<pre class="literal-block">
+aH1AFCwR/moc.nibetsap//:ptth
+</pre>
+<p>Ahh, now we're getting somewhere. We have a URL that has been reversed.
+It's &nbsp;short, and fairly obviously a pastebin.com url so I keyed it in by
+hand to my browser.</p>
+<p><a class="reference external" href="http://pastebin.com/RwCFA1Ha">http://pastebin.com/RwCFA1Ha</a></p>
+<p>This leads us to another block of base64 encoded text.</p>
+<pre class="literal-block">
+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
+</pre>
+<p>Let's put this through our decoder and see what we get. In this case it
+is a binary file of some sort. Because this is just a binary blob how do
+we know what to open it with? In this case I used the 'files' command on
+Linux which will look at a file and tell you what it is based on the
+'magic numbers' or typical file headers to tell you what type of file it
+is. In this case it is</p>
+<pre class="literal-block">
+DecodedBase64 (1).bin: gzip compressed data, was &quot;jlchal.txt&quot;, from Unix, last modified: Tue Apr 10 16:14:40 2012
+</pre>
+<p>I renamed the file and put it through gunzip and ended up with an ASCII
+text file.</p>
+<pre class="literal-block">
+IIII$8NMMMMMMMMMNDD8O$77IIIIIIIIZDMMN8OOO888OOOOZZ$$$$7IIIIIII77IIIIIIIIIIIIIIIIIIIIIIII777$7$$$ZZO8
+7777$ONMMMMMNNDDD88OZ7II???????I$8MMD8OOO8D8888OOZZZZZ$77II77777777IIIIIII?I?IIIIIIIIIII7777777$$Z88
+$777$ONMMMMNDD88OOZZ$I?????++++?I8MMND88DDDDD8OOZZ$$777777777777777IIII?II????IIIIIIIIII7777777$$ZOO
+IIII$ONMMMMNNDD88OZO7I??+++++++?IONMD8ZOOZOOZZ$777IIII??IIIIIIIIIIIIII???????????IIIIIII77777777$$OO
+???I7ONMMMMMMNNDD8OO$I???????++?7OMN8Z$$$$$$$$7$77IIIIIII?I????????????????????????????II77777777$ZO
+???I7OMMMMMMMMMNDD8OO7III???????78MND8ZZZ$$$$$Z$$$$$77II?I?????????????????????????????III7III777$ZO
+???I78NMMMMMMNNNDD88Z7IIIIII?I?IZ8MMDZZ$Z$7$7$$777$Z$OOOZ7???I?????????????????????????IIIIIII777$$Z
++??I$ONMMMMMMMNNDD88Z7IIIIIII7I7$ZN$I$7II7$I777$$Z77I$$$O$7IIII????????????????????????IIIIIIIIII7$$
++??I$ONMMMMMMNNNDD8OZ7IIIIIZ?7I7I7=$I++??I+I77?I$7$Z7$$$Z7$7I7III?????????++?+++?+?+++++????????II7$
+??II$8MMMMMMMNNND888Z7IIII7II?++++??+??I7II+I7II77III$$77$7$$8$$$$?I7?++++++++++++++++++????????II7$
+IIII$8MMMMMMMNNND888Z$7777$7I????++????$7II?7ZI7II$7I77$777$ZOO$Z8$OZ$?++++++++?????????IIIIIIII77$Z
+IIII$8MMMMMMMNNND888Z7$777?I?++?+II77$??+?I+7?7?+?7I?I$$7$Z$77$$$DZOO$$$I??????IIIIIIIIII77IIII77$$Z
+$7$$ODNMMMMMMMNND888$77?7IIIIII7II77I7I+~I++77I7=7?7+I77Z7$7$$7$88D8DZ$$$?II?IIIIIIIIIII777777777$ZZ
+D8DDDNMMMMMMMMMMNDI7I7I???+7??I77I7I??I=?IIIIIII7$Z7$7$$$I7$I$$Z$OODOOO$8Z7IIIIIIIIIIII77$$$$77$$ZZZ
+NNNNDNMMMMMMMMMM7IO7I?I?7III=+I??I7?+?=?I7=:~=+?+7=I7+I$II7I?7I777$O8ZZ$88$7IIIII7IIIII7$ZZZZZ$ZOO8O
+DDDDNNMMMMMMMMMD7$77?IIII++?+I7777I?I77I++++??+++++????III77I$77$ZOZOZO8888$II77777777$ZO88D88888DDD
+7$ZO8NMMMMMMMMNZ$7I?II?I7$?=IIIZ7I+?7III?=+=++?=++?++???ZIII7Z7$7OODODODD$N887$ZZ$$$$$ZZO8DDD8DDDD8D
+??I7ODMMMMMMMMNII77??+?I$$?I?I$7?+=+?+++======+++??III??II?$Z$O?I7OD8OOOO8NN8ZZOOZZZZZZZOO88888888OO
+??I7ODMMMMMMND87II?I77I7?+=+I7II?I???+=~+===+==???II?I+?I7I?I7I77$$888ZZ$ODDDOOZ8OZZOZZZZZZZOZZOZZZZ
+???7ODMMMMMMM877I+I?I$II?=++++???=+++==+=====~+=+??+???I$II?II7$OOIZZDOOZZ8DNDDDNNDDDD888OOZZZZZZZZZ
++++IZDMMMMMMMZ7II?+?I??7?+=+++++====~==~~~::~~~~~+===+??III??I$77OZ888OO$ONND88DNMMMMMMMNNNNDDDDDDDD
+==+?$DMMMMMM8Z$7I??II~?++=+=~~~~~===~~~=~~:,,::::~::~~=++===I+$$778D8OOOODN8MD8DMMMMMMMMMMMMMMMMMMMM
+==+?$DMMMNM8O777I?I$+++~++=~~=~:~:::~~=:::,,.,,,,,,:::~~=++III7$$ZOOO7ZZ888DMNDOMMMMMMMMMMMMMMMMMMMM
++++I$DMMMMM8D$Z$7?????==+++=~::::,,,,,,,,,,..,.,,,,,::::~+?7Z7$ZZOO88ZD8NNNNDNNO8DDDDNNNNNNMMMMMMMMM
+=++?$DMMMMMNZ$Z77???+?=+=I=::::,,..,,,,,,,,.,.,,,,,,::~=~=+I?II$$ZO8D88NMM8NMNDO8O8D888D8DDD8DDDDDDD
+~~=?78MMMMN8O$?$7??7?I??++~:::,,,,,,,.,.,,,,.,,,,,,::::~++=+??IIIIZOD88OMMMMMNZZZZZZZZOOOZOOOOOOOOO8
+~~=+7DMMMMM8ZZZ7I??77I77?=:,,,,,,,,,,,,...,,,,,,,,,::::~~==+++?I?II$ODZOMDMMNO777$77$$$$$$$$$$ZZZZZO
+~~=+7DMMMMMO+I?=+$777$I?=~:,,,,,,,,.,,,,,,,,,,,,,,,:::~~~===++???II7ZZO8MMMMM$II77777777$7$$$$ZZZZOZ
+~==?7DMMMMMNNZI?77$+$+?=~::,,,,,........,,,,,,,,,,::::~~~=~=++???I?77Z$ZMNMMM$II777777777777$$$$ZZZO
+===?7DMMMMMNNZOZZZ$+?I~=~:,,,,,,,,..,,,,,,,,,,..,,::::~~~~~==+??III77ZIDMN8MM7II77777777777$$$$$ZZZZ
+~~=+7DMMMMMNND8Z$Z?+++?~::,,,,,,,...,..,,,,,,,,,,,::~~~~~~~~+++?III7778N8NNNN77I77777777777$$$$$ZZZZ
+=~=?$DMMMMMNNDOZ8$I?=?+=::,,,,,,.....,,.,,,,,,,,,,:~~::~~:=?=+????III7Z8DDD8D7II77777777777$$$$$$ZZO
+=++IZNMMMMMNNDD$$Z7????+:::,,,,.,,.,,,,,,,,,::::~~~~~:=~+I+?+???IIIIII78NODOIIIII7777$777$$$$$ZZZZZO
+++?IONMMMMMNNDD8IZ$+IZ??::::,,.,,.,,,::~::::::~==++???+7?+???I?+??I?II7$D8O8ZIIIII77777$$$$$$Z$$ZZZZ
++??IODNNDDD8888Z$$Z?$O$+::::::~~~=~+======~:,:~=+I$7$?$8Z8Z?IZI++==+?I7$OD$ZZIIIII77777$77$$$$Z$$$$7
++??IODD8OOOZZZ$$77Z$$8$?::::::,~~=++I7$I+?=:,,:=?77+O+~77$++?$I=~~==??$7Z8OZZIIIII77777777777$$77III
+++?IO88OOZZ$$$777I?7Z8=~:,:::~=+??O$DI+?7:::,,:=?I??~::::~==?+==~=~=+?77ZOOZZIIIII7777777777777II???
+?+?IODD8OOOZZ$$7III????~:,::~~===~~:,,~=~::::,~=+II++=======~~~~~=~=+?7$ONN$$IIIIII7777777IIIIII???+
+++?IODDDDDD88OZ77II????+:,,,,::,::,~~==::,::,::~+II??==~~~~~:~=~~===+I7$8DO7$IIIIIII7I7777III7I?????
+++?IONMMMMNND8O$I7III?I+~:,,,..,,,::,,,,,,:::,:~+II??+=~~:~~~~~====++I$$ZN$$I???IIIIII77IIIIIIIIIIII
+++?78MMMMMNNN8O7IIIIII+==:,,,,,,,.,,,,,,,,:::::~+I7I?+~::::~:~~==+++?I7$ON$77????IIIIIIIIIIIIIIII7$$
+++?78MMMMMNNNDO$777II?I=?::,,,,,,,,,,,,,,,:~::,:=?777+~:,~::::~~=+???I$ZZD77$?????IIIIIIIIIII???I7$$
++??78MMMMMNNDDO$777III??7~::,,,,,.,,,,,,,:::::,:~=?II?7+~::::~~=~=?III7ZZ$$$??????IIIIIIIII?????I77$
+++?78MMMMMNNNDO$777III?I=I::,,,,,,.,,,,,:::::,::~=?7I?7?=~~:~~~~=++III7ZZ$I??????IIIIIIIIII?I???I7$$
+?+?$DMMMMMNNNDO$777III?I:?~::,,,,,,,,,:~~~::===++I7OZOZ7+~~~~~~~~++II7$Z$?????????IIIIIIII???????77$
+??I$DMMMMMNNNDO$777III?I,,~:::,,,,,,,:~~::=77III7$$$7$II++======~=??77Z$$??????????IIIIIII???????I77
+??IZDMMMMMNND8OZ$$77III?+,,~:::,,,::~~~::::~~~=:+++???7++I++++==~=+I77$$Z?????IIII7777777IIIIIIII7$$
+??IONMMMMMNNNDOZ$$77II??II=~::~::::~~=~:~~,==~:+=~=~===??+?I++==~=+II77ZZ????I77$$ZZZOOZZ$777777$ZOO
+??IZNMMMMMNNNDO$$$7IIIIII?I?~:::::~===~~~::::,~~~:::=+III?$Z+~=~~+?III$ZZ???II7ZOOO888OOZZ$77777$OOO
+??IZNMMMMMNND8O$777II??III??~::::~~==++=~~::::~++?I7ZN8$$7?+==::==??I7$OZMMMMN7$ZO888OOZZ$$$$$77$ZZO
+??IONMMMMMNND8O$777III?I??I??:~~:::~~====?7?+?+?=++=??II???+=~:~=???I7Z8ZMMMMMMZZ8888OOZO88D88ZZZZOZ
+??7ONMMMMNNND8OZ$$7II??IIII???~:~~::~:::,::===~====+++++???+===+++II7ZOO$MMMMMMMZO888OOOO8DDD888888O
+??78NMMMMNNND8OZ$$7II?II?I???I+~::~:::::,,:::::~====++??I?++==+=+??7$O8OZOMMMMMM8O888OZOO8OZ$$$ZO888
+??78NMMMMNNND8O$$77IIII?III??7OZ=:~:::::,,::~=+++=+??+?+====+++?III$OOZOZOMMMMMMNO8888OOOO$II?I7ZO88
+??78NMMMMMNND8O$7$7II?IIII???7ONN~~:~~::,,,,::~==~====~==~===++?I$$O8OZOZOMMMMNMMD$ZZZZ$Z$7????I7ZZ$
+??78MMMMMNNND8O$$$7IIIIIIII??7OODD+~~~:::::,:,::~~=~~:~~===+?+I7$$O8ZZZZZ8MMMMMNDN$ZZZ$$Z$777I77$ZZ$
+?I$8MMMMMNNND8OZ$$7IIIIIII???$8DMM=+=~~::::::,:::~~~~~~=++==+?$ZO8OZZZZ$Z8MMMMNNNMNZOOODD8OOOOZOO888
+?I$DMMMMMNNND8OZ$$7IIIIIIIID8DDMMM+~~?~~~~::::,:~:~~~===+?++I7ZO8OZ$$$7$Z8MMMNDMNMNN8ODMMNNDD88DDNMN
+?I$DMMMMMNNND8OZ$7IIIIII78OOMDNMMMO~~~=+=~~:::::~~~~~==???I?$O88ZZZ$77$$Z8MMMMNMDDDNMDDMMMNDD88DNMMM
+?I$DMMMMMNNNDOO$$77IIIZNDZDDDMDMMMM~~~~~~?+~~~:~+===+I?I?I$ZO8ZZ77II7$$ZZOMMMMDMNDNNNMMDMMNNNDDDNMMM
++I$DMMMMMNNND8OZ$$7IIZM8DDODNNMMMMM=:~~~:~+?+====+I7$$Z7$ZZZZ$$7II77$$$$$ZNMN8NMD8NNMMMMMNDDDNDNNMMM
++IZDMMMMMNNDD8OOZ$7III8M88NMMDNMMMM$~::~:::~=+I7$$7$$$$Z$$$$777I???II7$7$Z8M88NN7MNNMMMMMMMNDDDDDNMM
+?IONMMMMMNNND8OZZ$7IIII$MNNMNNMMMMMM~:::::::~:==???IIIIII?7I?I????III7I77$ODONDNMNMMMMMMMMMNNDDDDDDN
+?7ONMMMMMNNND8O$$77IIIIIZ:DMMNMMMNMM=:::,::~:~~:===+=?++?++?+++++??I?III77O8ODDDNMMMMMMMMMNNNNNMNDND
+?IONMMMMMNNND8OZ$7I7DNDNN8ZNNMNMMMMM=~:::,:::::=~~==~=======+=++++??II+I?7$ODN$MNMMMMMMMNMMMMMDMMMDD
+?IONMMMMMNNDD8OZ8N8NDMNM8ZODMDMMMMMM+:~::,,:,,,~:~~:~~:~~~~=~===+=++++?+?II$DDMNMMMMMMMMMMNMMMMMMMMM
+?7OMMMMMMNND88DD8NDDNNNNMDODM$DMNMMM+:::::,:,,:,,,,,,::::~~~~~~~~==+==+++?I7MMDMNMMMMMMMMMMMMNMMMMMM
+?78MMNOZ8MDDDDN8DNNNN8DDN8NDOM?NNMMM+~:,,,,,,,,,,,,,,:,,:::::~~==~=====++?$DNDDMMMMMMMMMMNMMMMMMMNMM
+?7ZZDDDMO8NDNDDDDNMDDDODNOON88MNDMMMI~:,,.,,,,,,,,,,,,,::::,:::~~~~~~~=+IMNMZ8MNMMMMMMNNMMMNMMMMNMMM
+ZODDDDN8NDNDNDDDNNDD8NNN8MD8NDDNNMMMM+~:,,,..,..,,,,,,,,,,:,,,::~::~~=MMMNDNNMMMMMMMMMMDDNNMMMNMNMMM
+8DDD8DDDN8N8NDDMNNMONDNM8ODD88DDDDMMMM$~:,.,.,.,.,.,,,,,,,,,,::~:~=MMMMMMNM8DNNMMMMMMMMNMDMMNDNNMMMM
+DDNNM88MNNDMDDD8MM88NNN8NDZZN8NZNNMMMMMMM=:,,,,.,.,,,,,,,:,::~?MNMMMMMMMNN8DMMMMMMMMMM8NMMMNNMNMNNMM
+NDDDND8DNNDDDDNNNMDDDNMNND8DZDNO8MDNMMMMMMMMM$~:::::::::=ZMMMMMMMMMMMMMMNMDDMDMMMMMMNNMNMMMMMNNNMMNM
+NNNN8ONDNDMN88DNMN8MNM8NMDD8DD8D88DMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZMDNNMMMMNNMNDMMNMDMNDDNNMMMN
+DNNND8NNNDM8NMDNMD8DNMDD88N88DZ8O8NNMMMMMMMMMMMMNMMMMMMMMMMMMMMMMMMMMMMNMDMMNMMMNDNMNMNNNNM8MDDNMMMM
+DNNM8NDNDD8ODNDMM8DMDM8NN88O8O8DZDDZMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN8NNMDNMMNDNNMDNDMNMDDNMNMMNN
+D8DMDDDNDNMOODNMDDD8DN8DMNND88DNODNNDMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOND8MMMMMMMMMNMNMNDDMNNN8MNMNMM
+</pre>
+<p>In case that doesn't render in your browser, here's what it looks like.</p>
+<p>[caption id=&quot;attachment_289&quot; align=&quot;alignnone&quot; width=&quot;234&quot; caption=&quot;Who
+the hell is this guy&quot;]<a class="reference external" href="http://fishermansenemy.com/blog/wp-content/uploads/2012/04/Screenshot-at-2012-04-30-113135.png"><img alt="God only knows" src="http://fishermansenemy.com/blog/wp-content/uploads/2012/04/Screenshot-at-2012-04-30-113135-234x300.png" /></a>[/caption]</p>
+<p>It's at this point that I've hit a bit of a wall. I have no idea who
+this guy is, although he looks kind of like Art Garfunkel and now that's
+all I can see when I look at it. The filename looks like it might be a
+clue, but again I do not recognise the name jlchal, or the initials JL
+if this is a challenge. It could refer to J.L Villar who has done some
+work in cryptography, however he does not look like this guy ;)</p>
+</div>
+<div class="section" id="what-do-we-have-then">
+<h2>What do we have then?</h2>
+<p>I have drilled down the levels and ended up with an ASCII art picture of
+some guy I don't recognise and a filename that may be a clue. If anyone
+has any suggestions then I'd love to hear them.</p>
+</div>
+<div class="section" id="how-about-the-last-line">
+<h2>How about the last line?</h2>
+<p>The last line consists of</p>
+<pre class="literal-block">
+3d { print 0x$444 ); { iff beep }
+</pre>
+<p>I'm assuming the 3d belongs to this line, as if you add it to the block
+of text above it makes it invalid base64.</p>
+<p>We have two executable blocks here, and this is where my lack of shell
+scripting is starting to be a problem. Print 0x should print a hex
+value, but the $ seems to indicate that it's using an environment
+variable. The presence of the beep seems to indicate that it's a bash
+environment but I cannot find the iff (if and only if) command anywhere
+inside bash.</p>
+<p>So I didn't get very far at all. Time for some more hacking to see if I
+can tease any more information out of it.</p>
+</div>
+<div class="section" id="update-2-5">
+<h2>UPDATE(2/5)</h2>
+<p>Twitter has informed me that JL is in fact&nbsp;&#64;jameslyne, the creator of
+the challenge.</p>
+</div>
+    
+        </section>
+    </div>
+</div>
+                </div>
+
+                <footer class="show-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>                </footer>
+            </div>
+            
+            <div class="image-pane main-content" style="background: url('http://fishermansenemy.com/images/backdrop.jpg'); background-size:cover; background-position: right;">
+                <div class="row">
+                    <div class="small-12 medium-4 large-12 columns">
+                        <h5 class='text-center'>About</h5>
+                        <div class="about-me">
+                            <div class="hide-for-medium-only small-3 columns no-buffer">
+                                <a class="th" href="http://fishermansenemy.com/images/profileimage.jpg">
+                                    <img src="http://fishermansenemy.com/images/profileimage.jpg">
+                                </a>
+                            </div>
+                            <div class="small-9 medium-12 large-9 columns text-justify">
+                                The personal blog of a UK based penetration tester
+                            </div>
+                            <div class="small-12 columns">
+                                <ul class="inline-center social-list">
+                                    <li><a href="http://twitter.com/FishermansEnemy"><i class="fa fa-twitter"></i>&nbsp; Twitter</a></li>
+                                    <li><a href="http://www.youtube.com/user/MrFishermansEnemy"><i class="fa fa-youtube"></i>&nbsp; YouTube</a></li>
+                                    <li><a href="http://twitch.tv/FishermansEnemyTV"><i class="fa fa-twitch"></i>&nbsp; Twitch</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="small-12 medium-4  large-12 columns link-list">
+                    </div>
+
+<!--
+                    <div class="small-12 medium-3 large-12 columns">
+                    </div>
+-->
+               </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <footer class="hide-for-large-up">
+<div class="row">
+    <div class="small-6 medium-3 columns">
+        <ul class="left-nav">
+            <li><a href="http://fishermansenemy.com">Home &nbsp;<i class="fa fa-home fa-fw"></i></a></li>
+            <li><a href="http://fishermansenemy.com/categories.html">Categories &nbsp;<i class="fa fa-folder-open fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="small-6 medium-3 medium-push-6 columns">
+        <ul class="right-nav">
+            <li><a href="http://fishermansenemy.com/archives.html"><i class="fa fa-archive fa-fw"></i>&nbsp; Archives</a></li>
+        </ul>
+    </div>
+    <div class="small-12 medium-6 medium-pull-3 columns text-center">
+    </div>
+    <div class="small-12 columns sub-footer">
+        <hr>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-left">
+                &copy;  FishermansEnemy 
+                <!-- <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="cc.png" /></a>-->
+            </p>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <p class="small-text-center medium-text-right">
+                Proudly powered by <a href="http://blog.getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+            </p>
+        </div>
+    </div>
+</div>            </footer>
+        </div>
+        
+        
+        <script src="http://fishermansenemy.com/theme/js/jquery.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/foundation.min.js"></script>
+        <script src="http://fishermansenemy.com/theme/js/app.js"></script>
+		
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-20157586-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </body>
+  
+</html>
