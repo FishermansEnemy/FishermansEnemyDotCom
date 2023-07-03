@@ -1,3 +1,4 @@
+<span style="white-space: pre;"> 
 @ECHO OFF & SETLOCAL EnableDelayedExpansion
 TITLE WinPEAS - Windows local Privilege Escalation Awesome Script
 COLOR 0F
@@ -652,3 +653,4 @@ EXIT /B
 SET "CurrentLine=%~1"
 FOR /F "delims=" %%A IN ('FORFILES.EXE /P %~dp0 /M %~nx0 /C "CMD /C ECHO.!CurrentLine!"') DO ECHO.%%A
 EXIT /B
+</span> 
