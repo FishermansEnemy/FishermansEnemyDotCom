@@ -12,6 +12,7 @@
     <link rel="icon" type="image/jpeg" href="{{ '/images/favicon.jpg' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="{{ '/assets/js/stream-status.js' | relative_url }}" defer></script>
   </head>
   <body>
     <div class="site-shell">
@@ -24,6 +25,18 @@
         </nav>
         <a class="header-about" href="{{ '/#about' | relative_url }}">About <span aria-hidden="true">↗</span></a>
       </header>
+      <section class="stream-status" aria-label="Streaming status" aria-live="polite" data-stream-status>
+        <article class="stream-status-card" data-service="twitch" data-channel="fishermansenemytv">
+          <a class="stream-avatar-link" href="https://twitch.tv/fishermansenemytv" aria-label="Twitch channel"><img class="stream-avatar" alt="Twitch channel avatar" loading="lazy" data-avatar></a>
+          <div class="stream-status-details"><div class="stream-status-heading"><a class="stream-service-link" href="https://twitch.tv/fishermansenemytv">Twitch</a><span class="stream-state" data-state>CHECKING</span></div><p class="stream-description" data-description>Checking live status…</p></div>
+        </article>
+        <article class="stream-status-card" data-service="youtube" data-channel="Fishermansenemy" data-channel-id="UCgesG-XlnAQiLmQqnDokaLA">
+          <a class="stream-avatar-link" href="https://www.youtube.com/c/fishermansenemy/live" aria-label="YouTube channel"><img class="stream-avatar" src="https://yt3.googleusercontent.com/_MIPaOqPmpq-XiDWHjCnEJiCmCU7WNNvK_cS1PzApFdfeh7hPp_sivZ3xi26OJb2l9nVUBVuBq8=s128-c-k-c0x00ffffff-no-rj" alt="" loading="lazy"></a>
+          <div class="stream-status-details"><div class="stream-status-heading"><a class="stream-service-link" href="https://www.youtube.com/c/fishermansenemy/live">YouTube</a><span class="stream-state" data-state>CHECKING</span></div><p class="stream-description" data-description>Checking live status…</p></div>
+        </article>
+      </section>
+ 
+ 
 
       <main id="main-content">{{ content }}</main>
 

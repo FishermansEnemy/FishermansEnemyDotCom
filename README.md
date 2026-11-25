@@ -15,6 +15,8 @@ Open `http://localhost:4000`. A standalone Jekyll executable is also available i
 
 ## Publishing
 
-The `.github/workflows/pages.yml` workflow builds the site with GitHub's Pages Jekyll action and deploys it when changes are pushed to `main`. In the repository's GitHub settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. The `CNAME` file is retained for `fishermansenemy.com`; make sure the domain is configured in the repository's Pages settings and its DNS still points at GitHub Pages.
+GitHub Pages publishes the Jekyll site directly from the configured branch; no Actions build or deploy workflow is required. In repository settings, select **Pages → Build and deployment → Deploy from a branch**, then choose the `main` branch and `/ (root)` folder. The `CNAME` file is retained for `fishermansenemy.com`; configure the domain in the Pages settings and keep its DNS pointed at GitHub Pages.
 
-If the repository publishes from a branch instead of using Actions, use **Deploy from a branch**, select the `main` branch and `/ (root)` folder. GitHub Pages recognises `_config.yml`, `Gemfile`, and `Gemfile.lock` directly.
+The Twitch and YouTube status banner is populated in the visitor's browser by `assets/js/stream-status.js`. It polls the combined live-status endpoint once per minute; no API credentials are stored in the repository. The live-state endpoint caches results for 60 seconds and limits requests to 20 per minute per IP. Twitch live title, game, and avatar come from DecAPI. YouTube latest uploads come from the channel feed through rss2json. These third-party services can change availability or rate limits; live-state lookup failures are shown as unavailable, not offline.
+
+The YouTube channel ID used for the uploads feed is `UCgesG-XlnAQiLmQqnDokaLA`, resolved from the confirmed `@Fishermansenemy` channel. The channel links retain the `/c/fishermansenemy/live` route.

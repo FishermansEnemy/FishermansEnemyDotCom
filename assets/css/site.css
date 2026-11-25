@@ -212,3 +212,18 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+.stream-status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 17px 0; border-bottom: 1px solid var(--border); }
+.stream-status-card { display: flex; min-width: 0; align-items: center; gap: 12px; }
+.stream-avatar-link { display: block; flex: 0 0 auto; }
+.stream-avatar { display: block; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 50%; object-fit: cover; }
+.stream-avatar-placeholder { display: grid; place-items: center; background: var(--surface); color: var(--muted); font-family: var(--serif); font-size: 17px; }
+.stream-avatar[hidden] { display: none; }
+.stream-status-details { min-width: 0; }
+.stream-status-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.stream-service-link { font-size: 12px; font-weight: 600; }
+.stream-service-link:hover, .stream-description a:hover { color: var(--accent); }
+.stream-state { color: var(--muted); font-family: var(--mono); font-size: 9px; letter-spacing: .04em; }
+.stream-state.is-online { color: #7ee08a; }
+.stream-description { display: flex; min-width: 0; flex-wrap: wrap; gap: 0 9px; margin: 3px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+.stream-description a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stream-description > span { color: var(--quiet); }
