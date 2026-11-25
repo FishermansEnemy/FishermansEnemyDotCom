@@ -1,0 +1,60 @@
+---
+layout: post
+title: "Revision for GPEN - Day 1"
+date: 2011-01-20 12:00:00 +0000
+slug: revision-for-gpen-day-1
+categories: ["InfoSec"]
+excerpt_separator: "<!--more-->"
+---
+<p>This week I'm starting my revision for SEC560 and the GPEN cert.<!--more--> I'm
+currently just finishing the day 2 mp3 by Ed Skoudis, and considering
+it's just Ed talking through the slides I'm finding it as good as when I
+was in the class. There is lots of insight into the tools that are being
+described, as you would expect from having the author of the course
+delivering it live. TODO so far:</p>
+<p>Learn the following tools inside out:</p>
+<div class="line-block">
+<div class="line">hping3</div>
+<div class="line-block">
+<div class="line">nmap NSE</div>
+<div class="line">Dig</div>
+<div class="line">BiLE</div>
+<div class="line">ExifTool</div>
+<div class="line">FOCA</div>
+<div class="line">GHDB</div>
+<div class="line">Sid2user and User2sid</div>
+<div class="line">Enum</div>
+<div class="line">nc forwarding</div>
+</div>
+</div>
+<p>So far I've covered the planning, scoping and recon stage of the pen
+test. This covers the initial contact between the tester and the
+customer and defines the rules of engagement and scope of the test. The
+rules of engagement details how the testers are going to interact with
+the environment they are testing and the techniques that they are
+allowed to use. Examples of what should be in the RoE are the dates
+between which the test is going to be conducted, the communications that
+will take place between the testers and the customer etc. The scope
+defines what will be tested, and includes the IP's to be targeted and
+whether social engineering or physical testing is allowed. Obviously
+these are only examples, for the full beef go and do SEC560 :-)</p>
+<p>Also covered on day 1 is recon, including interesting web searches,
+google hacking, document metadata extraction, whois searches etc. There
+is so much information that individuals and companies make publicly
+available that the tester can leverage to gain access to systems that
+they should not be able to. As an example of this, imagine the company
+you are testing has a minimal footprint on the internet that you can
+access. This footprint is fire walled, patched and behind WAF's and
+IPS's. You just cannot find a way to exploit anything to start pivoting
+your way into the network. Are you done? nope; go onto their website
+with a spider and download all the documents you can. Run these docs
+through Exiftool and find out the version of office/acrobat etc that the
+company are using, then go to the "vacancies" section on their website
+and apply for some jobs with a CV that also happens to contain exploits
+for the software you know they are using. Include links to a website
+that is hosting browser exploits or the completely evil browser-autopwn
+from Metasploit and start feeding them Meterpreter shells. This is only
+the beginning.</p>
+<p>Day 2 covers scanning, which is why I have a loooong list of tools I
+need to learn. I'll write up a summary when I'm happy that I understand
+all the evil things that I can do with them ;-)</p>

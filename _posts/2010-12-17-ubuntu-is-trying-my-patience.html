@@ -1,0 +1,36 @@
+---
+layout: post
+title: "Ubuntu is trying my patience"
+date: 2010-12-17 12:00:00 +0000
+slug: ubuntu-is-trying-my-patience
+categories: ["Rant"]
+excerpt_separator: "<!--more-->"
+---
+<!--more-->
+<p>Maybe it's because I'm trying to do "power user" stuff, but Ubuntu and
+my HP laptop are not giving me an easy time.</p>
+<p><strong>Problem the first:</strong></p>
+<p>Randomly on boot my HP Laptop will decide that when it is docked it will
+not enable the wired network connection. The only fix I've found so far
+is to keep re-booting while undocking the machine and switching the
+cable between the dock and the laptop. Apparently the BIOS option for
+WLAN/LAN switching may be causing this, so I'll have to give that a go
+when I'm brave enough to restart it again.</p>
+<p><strong>Problem the second:</strong></p>
+<p>And this one is a doozie! I'm running Ubuntu 10 on my laptop so I don't
+have to deal with crappy XP and can actually get some work done. As a
+number of tools my company use are on windows I have been given access
+to a nifty virtual XP desktop on our ESX cluster so I can use said
+tools. So far so good. I can connect via RDP and that works fine, but I
+need to use a USB webcam with windows live communicator for some video
+conferences. Can't use Terminal Server Client to do that so I thought
+I'd install vmware-view client as this is supported <strong>on the windows
+version of the software</strong>.</p>
+<p>Over I head to the vmware website and lo-and-behold there is no Linux
+vmware-view client. That's kinda disappointing, but fret ye now, the
+open source community has created the vmware view open client. On it
+goes, I can now connect to my virtual machine ... and ... there is no
+support for USB device transfer in this software.</p>
+<p>Damnit</p>
+<p>So now I have to find a way of getting my Linux USB device connected to
+my virtual windows machine. It's not looking good.</p>

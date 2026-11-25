@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="article-page">
+  <a class="back-link" href="{{ '/archives.html' | relative_url }}">← All writing</a>
+  <header class="article-header">
+    {% if page.categories and page.categories.size > 0 %}<a class="eyebrow" href="{{ '/categories.html' | relative_url }}">{{ page.categories | first }}</a>{% endif %}
+    <h1>{{ page.title | escape }}</h1>
+    <p class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time><span aria-hidden="true">·</span><span>{{ content | number_of_words | divided_by: 220 | at_least: 1 }} min read</span></p>
+  </header>
+  <div class="prose">{{ content }}</div>
+  {% if page.categories and page.categories.size > 0 %}<div class="article-topics"><span>Filed under</span>{% for category in page.categories %}<a class="topic-chip" href="{{ '/categories.html' | relative_url }}">{{ category }}</a>{% endfor %}</div>{% endif %}
+  <a class="back-link bottom-back-link" href="{{ '/archives.html' | relative_url }}">← Back to all writing</a>
+</article>

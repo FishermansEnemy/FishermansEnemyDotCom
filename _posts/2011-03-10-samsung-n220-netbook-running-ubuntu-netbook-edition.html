@@ -1,0 +1,58 @@
+---
+layout: post
+title: "Samsung n220 netbook running Ubuntu Netbook Edition"
+date: 2011-03-10 12:00:00 +0000
+slug: samsung-n220-netbook-running-ubuntu-netbook-edition
+categories: ["Hardware"]
+excerpt_separator: "<!--more-->"
+---
+<!--more-->
+<p>I've made my mind up about the travel netbook and gone for the Samsung
+n220 with the long battery life.</p>
+<div class="section" id="first-impressions">
+<h2>First Impressions</h2>
+<p>It's small, light and good looking; everything you need in a netbook.
+Running Windows 7 Home Starter with only 1GB of RAM is not a good idea.
+It also came with so much bloatware that it was running at between 50%
+and 80% CPU at all times. This was not going to be good news for the
+battery. So time to break out the Ubuntu 10.10 netbook edition
+installer.</p>
+</div>
+<div class="section" id="ubuntu-on-the-n220">
+<h2>Ubuntu on the n220</h2>
+<p>I wish installing Ubuntu on this was a painless process, but as usual
+with Linux there are a number of hardware issues that need to be
+resolved before the machine is usable.</p>
+<ul class="simple">
+<li>The wireless works maybe 20% of the time. It can see the AP's but
+will not associate. This is down to the r8192e_pci and r8192se_pci
+modules that come with Ubuntu.</li>
+<li>The brightness of the screen when off battery is set a 50% and the
+slider bar and Fn+UP/DOWN keys do not change it.</li>
+<li>Multi touch gestures on the track pad do not work.</li>
+</ul>
+<p>After some searching I came across <a class="reference external" href="http://www.stewartpratt.com/?p=443">this
+post</a> by Stewart Pratt. If you
+follow the instructions there it will get you up an running in no time.
+The only thing I am still having issues with is the multi touch
+gestures, but I'll keep on at it and post an update when I figure it
+out.</p>
+<p><strong>Update</strong> I should have paid closer attention to the post I linked, you
+need both the Vert/HorizTwoFingerScroll <em>and</em> the EmulateTwoFingerMinW/Z
+settings for the two finger scroll to work.</p>
+<p>In conclusion, Ubuntu 10.10 runs <strong>much</strong> faster than windows 7, and
+uses much less system resources. I'm hoping this will have a positive
+effect on the battery life, which so far seems to be as advertised.</p>
+</div>
+<div class="section" id="weaponisation">
+<h2>Weaponisation</h2>
+<p>As far as running the cool toys goes, there is not good news on that
+front. A USB bootable version of BT 4 R2 does not have the modules for
+the Intel GMA3150 or the Realtek r8192s wireless card. With some playing
+around you could get these working but it would have to be on
+a persistent USB install or a HDD install. I'll pass for now.</p>
+<p>I can report however that like the other versions of Ubuntu it will run
+Metasploit just fine ;) Do you think my daughter will be more interested
+in watching Disney princesses or playing around with MS08_067? Next up
+is seeing how it handles Kismet and airpwn-ng.</p>
+</div>

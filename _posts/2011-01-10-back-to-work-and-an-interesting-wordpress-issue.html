@@ -1,0 +1,33 @@
+---
+layout: post
+title: "Back to work, and an interesting wordpress issue"
+date: 2011-01-10 12:00:00 +0000
+slug: back-to-work-and-an-interesting-wordpress-issue
+categories: ["InfoSec"]
+excerpt_separator: "<!--more-->"
+---
+<!--more-->
+<p>It's my first day back to work after the holidays, and with a 2 year old
+potty training and a 4 month old teething it actually feels like a bit
+of a break :-) My GPEN is getting closer and I really need to hit the
+books soon, but before that I need to figure out something odd that I
+found in my comments this morning.</p>
+<p>I logged in to do the update to Wordpress 3.0.4 and noticed that Akismet
+had flagged a comment as spam. Not unusual you might think, that is it's
+job after all. The interesting thing is that I have set Wordpress to
+only allow registered users to post comments, and that all comments must
+be moderated by me before they can be posted. I also have ReCAPCHA
+installed to stop spam bots</p>
+<p>As I am currently one of the, er, least popular sites on the tubes I
+only have one registered user - me. I have not had any emails telling me
+that someone would like to register an account, no comments have be sent
+to me for moderation either. The username that this comment comes from
+is apparently "fishermansenemy" a mis-capitalised version of my display
+name, and the "website" link for the user is an IP that goes to a pharma
+spam site.</p>
+<p>Comment authentication bypass is not an issue I was aware existed in
+3.0.3 so I am puzzled as to how this comment got as far as it did. I
+have reached out to the much more talented colleagues of mine in the
+security community and hopefully I can chase this down. It will
+certainly be a learning exercise if nothing else. Thanks spammers for my
+first introduction to web application security.</p>

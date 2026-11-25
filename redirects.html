@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /legacy-redirects.html
+---
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={{ '/' | absolute_url }}"><title>Redirecting</title></head><body><ul>{% assign archived_posts = site.posts | sort: 'date' | reverse %}{% for post in archived_posts %}{% assign old_post_url = '/' | append: post.slug | append: '.html' %}{% if old_post_url != post.url %}<li><a href="{{ post.url | relative_url }}">{{ old_post_url }}</a></li>{% endif %}{% endfor %}{% for category in site.categories %}{% capture old_category_slug %}{{ category[0] | slugify }}{% endcapture %}<li><a href="{{ '/categories.html' | relative_url }}#topic-{{ category[0] | slugify }}">/category/{{ old_category_slug }}.html</a></li>{% endfor %}</ul></body></html>

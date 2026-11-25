@@ -1,0 +1,106 @@
+---
+layout: post
+title: "Why the London 2012 WiFi network will be a boon for information theives"
+date: 2012-01-11 12:00:00 +0000
+slug: why-the-london-2012-wifi-network-will-be-a-boon-for-information-theives
+categories: ["InfoSec"]
+excerpt_separator: "<!--more-->"
+---
+<!--more-->
+<p><img alt="image0" src="http://www.great-britain.co.uk/world-heritage/westminster-abbey/Westminster-abbey.jpg">I was reading twitter the other day and came across a report
+on London getting blanketed by free <a class="reference external" href="http://www.telegraph.co.uk/travel/destinations/europe/uk/london/8997413/Europes-largest-free-Wi-Fi-zone-comes-to-London.html">WiFi
+coverage</a>
+courtesy of O2 and this got me thinking. If I were a bad guy this would
+present me with such a very tasty target. Lots of tourists coming into
+the city for the Olympics with all of their laptops, smart phones and
+tables. All of them not wanting to spend huge amounts on 3G roaming but
+thirsty for information and posting thousands of pics to Facebook and
+twitter. Of course they are going to take advantage of this free
+service, and so will the criminals.</p>
+<p>In order to offer this service free of charge then security will always
+take a back seat. After all the information flowing over the network
+isn't O2's is it? They aren't going to give each user a certificate to
+authenticate to the AP, and they aren't going to
+configure everyone's device to verify the cert on the AP. I mean who are
+we kidding, they aren't even going to implement WEP let alone WPA2. At
+best it will be a captive portal so they can grab some nice info to sell
+on to their advertising buddies.</p>
+<p>So now you are in London, you've taken some photos, waved at the Queen
+and taunted the guards outside Buckingham palace. You're ready to drop
+it all of Facebook so you're friends know just how much better you are
+than them. Time to connect to the free WiFi!</p>
+<p>Open up your WiFi connection manager and there is "London Free WiFi from
+O2" [OPEN], sweet.</p>
+<p>Select the AP and voilà, IP address obtained and I'm all ready to go.</p>
+<p>Open up Internet Explorer and I get a nice O2 registration page where
+you can sign up for a free account or log on with an existing one. You
+put in your name, address, date of birth, mothers maiden name email
+address etc and are issued a default password. You don't bother changing
+this, you just want to get on Facebook.</p>
+<p>Log into Facebook and post pics. Look at your friends posts and comment
+"lol". Isn't living in the future cool?</p>
+<p>The above sounds like a plausible use case for most people in the city
+and for most people they won't see anything wrong with it. After all,
+they had to put in a password right, so it must be secure? Well, not so
+much. You see, while the tourist was sitting down with their latte to
+make their Facebook friends jealous, what actually was happening was
+this.</p>
+<p>A criminal sets themselves up in a high traffic area of the city,
+probably near one of the sporting events. They fire up their laptop with
+an ALFA AWUS051NH wireless network adapter and 5dBi antenna.They will
+then fire up a copy of
+<a class="reference external" href="http://wirelessdefence.org/Contents/KARMAMain.htm">Karma</a>. Now,
+Karma is a very generous piece of code. It will listen on the WiFi card
+and wait to hear other devices probing for access points. Usually when
+and AP receives a broadcast for an SSID that it doesn't host it will
+simply ignore it, but Karma will answer all probes with a positive and
+allow the client to connect to it. Karma will then give the client and
+access point and begin to handle traffic. At this point Karma shows its
+generous nature again and will start answering requests for connections
+on a large number of protocols such as SMTP and FTP, it will use these
+connections to harvest the users credentials. If the criminal is
+being particularly evil they will be running
+<a class="reference external" href="http://dev.metasploit.com/redmine/projects/framework/wiki/Karmetasploit">Karmetasploit</a> to
+automatically detect the software that you are using and start feeding
+them backdoors and exploits, joining you to their botnet and saving your
+machine to have more fun with later.</p>
+<p>If the criminal is feeling generous he will connect himself to the
+legitimate WiFi and route your traffic onwards so you can actually surf,
+and he can steal even more credentials.</p>
+<p>So how do you get around this? is there a way to use this service
+safely? If you want to give yourself a level of privacy while using a
+public network then your only real option is to connect via VPN to
+another trusted network and run all of your traffic through that. You
+are still exposed to having your credentials harvested between
+establishing connection to the network and establishing connection to
+the VPN, but if you are careful and make sure there are no apps that are
+going to attempt to connect as soon as they have a valid network then
+you should be OK. Also, make sure your anti-virus is up to date, but DO
+THAT AT HOME! you will see why in a bit.</p>
+<p>If your smart phone supports VPN's then it should be safe to use them as
+well, if not then either don't use it, or use 3G. Check
+out <a class="reference external" href="http://openvpn.net/">openVPN</a> to set up a service at your home
+that you can connect back to.</p>
+<p>On the subject of software that will try to connect as soon as it gets a
+connection, it's not just email apps that will do this. If you have
+Java, Acrobat, Flash or a host of other apps installed then they will
+attempt to connect back to their mothership and download updates. If our
+criminal is being very evil he will also be running
+<a class="reference external" href="http://www.infobytesec.com/down/isr-evilgrade-Readme.txt">evilgrade</a>.
+Evilgrade is like Karma but for updates, it will intercept traffic and
+look for software calling home for updates. When it finds one it will
+intercept the connection and send the computer malware instead of the
+updates it was expecting. Welcome to the criminals botnet. The only
+defence is to make sure you are using a VPN but you will still be
+exposed to attack before you have established the connection or if it
+drops out for any reason. <a class="reference external" href="http://practicalrambler.blogspot.com/2011/01/windows-7-firewall-how-to-always-use.html">This
+article</a>
+give some details on some third-party software you could use to help
+with this.</p>
+<p>Everything that I have said above applies just the same to using any
+public network, but I contest that this combination of such a large
+public network with so many foreign tourists who will not want to use 3G
+due to costs makes this a golden opportunity for information thieves. So
+spread the word, make sure that your friends and family understand the
+risks, and as <a class="reference external" href="http://www.youtube.com/user/InfosecCynic">@j4vv4d</a>
+would say, "Stay secure my friends".</p>

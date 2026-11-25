@@ -1,0 +1,13 @@
+title: FishermansEnemy
+tagline: Musings of an infosec nerd
+description: The personal blog of a UK-based penetration tester. Notes on information security, technology and everything in between.
+url: https://fishermansenemy.com
+baseurl: ""
+permalink: /:slug.html
+plugins:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
